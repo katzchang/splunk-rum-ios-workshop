@@ -35,6 +35,11 @@
 | Node.js | `node -v` | 18.0 以上 |
 | npm | `npm -v` | 9.0 以上 |
 
+**インストールガイド:**
+
+- **Xcode**: [Mac App Store](https://apps.apple.com/app/xcode/id497799835) からインストール
+- **Node.js / npm**: [Node.js 公式サイト](https://nodejs.org/) から LTS 版をインストール（npm は Node.js に含まれています）
+
 ### 2.2 iOS シミュレーターの確認
 
 1. Xcode を起動
