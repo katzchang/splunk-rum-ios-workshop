@@ -18,6 +18,10 @@ targets:
     platform: iOS
     sources:
       - path: Sources
+    dependencies:
+      - sdk: WebKit.framework
+      - sdk: LocalAuthentication.framework
+      - sdk: AVFoundation.framework
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.example.RUMSampleApp
