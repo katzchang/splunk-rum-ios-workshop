@@ -149,18 +149,19 @@ SDK を組み込むだけで、以下のデータが自動的に収集されま�
 
 | データ種別 | 説明 |
 |-----------|------|
-| **App Start** | アプリの起動時間 |
-| **Screen Views** | 画面遷移（ViewController の表示） |
-| **Network Requests** | HTTP リクエストのレイテンシ・ステータス |
+| **App Launch** | アプリのローンチ数 |
 | **Crashes** | クラッシュレポート |
-| **ANR** | Application Not Responding の検出 |
+| **Network Requests** | HTTP リクエストのレイテンシ・ステータス |
+| **Session Traces** | 各セッションのトレース情報 |
+| **Session Replay** | セッションリプレイ（画面操作の録画） |
 
 ### 5.1 確認してみよう
 
 以下の操作を行い、Splunk RUM でデータが記録されることを確認しましょう：
 
-1. **画面遷移**: ログイン → ホーム → カメラ → ホーム → WebView
-2. **ネットワーク**: WebView で商品一覧を表示（Angular アプリへのリクエスト）
+1. **ネットワーク**: 商品一覧画面を表示（Angular アプリへのリクエスト）、RUM テスト画面で HTTP リクエストボタンをタップ
+2. **クラッシュ**: RUM テスト画面で「クラッシュさせる」をタップ（シミュレーターから直接起動した状態で）
+3. **セッションリプレイ**: Splunk RUM の Session Replay で操作内容を確認
 
 ---
 
