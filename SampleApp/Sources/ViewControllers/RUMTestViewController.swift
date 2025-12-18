@@ -47,22 +47,22 @@ class RUMTestViewController: UIViewController {
     private let apiBaseURL = "http://localhost:3000"
 
     @IBAction func request200ButtonTapped(_ sender: UIButton) {
-        makeRequest(to: "\(apiBaseURL)/api/test/200", expectedStatus: 200)
+        makeRequest(to: "\(apiBaseURL)/api/test/200")
     }
 
     @IBAction func request400ButtonTapped(_ sender: UIButton) {
-        makeRequest(to: "\(apiBaseURL)/api/test/400", expectedStatus: 400)
+        makeRequest(to: "\(apiBaseURL)/api/test/400")
     }
 
     @IBAction func request500ButtonTapped(_ sender: UIButton) {
-        makeRequest(to: "\(apiBaseURL)/api/test/500", expectedStatus: 500)
+        makeRequest(to: "\(apiBaseURL)/api/test/500")
     }
 
     @IBAction func requestProductsButtonTapped(_ sender: UIButton) {
-        makeRequest(to: "\(apiBaseURL)/api/products", expectedStatus: 200)
+        makeRequest(to: "\(apiBaseURL)/api/products")
     }
 
-    private func makeRequest(to urlString: String, expectedStatus: Int, timeout: TimeInterval = 30) {
+    private func makeRequest(to urlString: String, timeout: TimeInterval = 30) {
         guard let url = URL(string: urlString) else { return }
 
         var request = URLRequest(url: url)
@@ -71,21 +71,19 @@ class RUMTestViewController: UIViewController {
         let task = URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
             DispatchQueue.main.async {
                 if let error = error {
-                    self?.showAlert(title: "リクエストエラー", message: error.localizedDescription)
+                    self?.showAlert(title: "エラー", message: error.localizedDescription)
                     return
                 }
 
                 if let httpResponse = response as? HTTPURLResponse {
                     self?.showAlert(
-                        title: "レスポンス受信",
+                        title: "レスポンス",
                         message: "ステータスコード: \(httpResponse.statusCode)"
                     )
                 }
             }
         }
         task.resume()
-
-        showAlert(title: "リクエスト送信", message: "HTTPリクエストを送信しました\n期待するステータス: \(expectedStatus)")
     }
 
     // MARK: - Helper
