@@ -377,6 +377,18 @@
                                             <action selector="request500ButtonTapped:" destination="RUMTestVC" eventType="touchUpInside" id="Request500Action"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RequestProductsButton">
+                                        <rect key="frame" x="0.0" y="432" width="200" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="RequestProductsButtonHeight"/>
+                                        </constraints>
+                                        <buttonConfiguration key="configuration" style="tinted" title="商品一覧 (API)">
+                                            <color key="baseForegroundColor" systemColor="systemBlueColor"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="requestProductsButtonTapped:" destination="RUMTestVC" eventType="touchUpInside" id="RequestProductsAction"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="RUMStackWidth"/>
