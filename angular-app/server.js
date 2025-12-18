@@ -81,24 +81,24 @@ app.get('/api/products/:id', (req, res) => {
 
 // テスト用エンドポイント: 200 OK
 app.get('/api/test/200', (req, res) => {
-  res.json({ status: 'OK', message: '正常なレスポンスです' });
+  return res.status(200).json({ status: 'OK', message: '正常なレスポンスです' });
 });
 
 // テスト用エンドポイント: 400 Bad Request
 app.get('/api/test/400', (req, res) => {
-  res.status(400).json({ error: 'Bad Request', message: 'リクエストが不正です' });
+  return res.status(400).json({ error: 'Bad Request', message: 'リクエストが不正です' });
 });
 
 // テスト用エンドポイント: 500 Internal Server Error
 app.get('/api/test/500', (req, res) => {
-  res.status(500).json({ error: 'Internal Server Error', message: 'サーバーエラーが発生しました' });
+  return res.status(500).json({ error: 'Internal Server Error', message: 'サーバーエラーが発生しました' });
 });
 
 // Angular アプリの静的ファイルを配信
 app.use(express.static(path.join(__dirname, 'dist/angular-app/browser')));
 
-// SPA用: 全てのルートをindex.htmlにリダイレクト
-app.get('*', (req, res) => {
+// SPA用: 全てのルートをindex.htmlにリダイレクト（Express 5対応）
+app.use((req, res) => {
   res.sendFile(path.join(__dirname, 'dist/angular-app/browser/index.html'));
 });
 
