@@ -18,6 +18,10 @@ class HomeViewController: UIViewController {
         performSegue(withIdentifier: "showWebView", sender: nil)
     }
 
+    @IBAction func rumTestButtonTapped(_ sender: UIButton) {
+        performSegue(withIdentifier: "showRUMTest", sender: nil)
+    }
+
     @IBAction func logoutButtonTapped(_ sender: UIButton) {
         navigationController?.popToRootViewController(animated: true)
     }

@@ -125,8 +125,22 @@
                                             <action selector="webViewButtonTapped:" destination="HomeVC" eventType="touchUpInside" id="WebViewAction"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RUMTestButton">
+                                        <rect key="frame" x="0.0" y="132" width="200" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="RUMTestButtonHeight"/>
+                                        </constraints>
+                                        <state key="normal" title="RUMテスト"/>
+                                        <buttonConfiguration key="configuration" style="tinted" title="RUM テスト">
+                                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="17"/>
+                                            <color key="baseForegroundColor" systemColor="systemOrangeColor"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="rumTestButtonTapped:" destination="HomeVC" eventType="touchUpInside" id="RUMTestAction"/>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LogoutButton">
-                                        <rect key="frame" x="0.0" y="132" width="200" height="32"/>
+                                        <rect key="frame" x="0.0" y="198" width="200" height="32"/>
                                         <state key="normal" title="ログアウト"/>
                                         <buttonConfiguration key="configuration" style="plain" title="ログアウト">
                                             <fontDescription key="titleFontDescription" type="system" pointSize="17"/>
@@ -156,6 +170,7 @@
                         <outlet property="welcomeLabel" destination="WelcomeLabel" id="WelcomeLabelOutlet"/>
                         <segue destination="CameraVC" kind="show" identifier="showCamera" id="ShowCameraSegue"/>
                         <segue destination="WebViewVC" kind="show" identifier="showWebView" id="ShowWebViewSegue"/>
+                        <segue destination="RUMTestVC" kind="show" identifier="showRUMTest" id="ShowRUMTestSegue"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HomeFirstResponder" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -267,6 +282,120 @@
             </objects>
             <point key="canvasLocation" x="1528" y="400"/>
         </scene>
+        <!--RUM Test View Controller-->
+        <scene sceneID="RUMTestScene">
+            <objects>
+                <viewController id="RUMTestVC" customClass="RUMTestViewController" customModule="RUMSampleApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RUMTestView">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="RUMButtonStack">
+                                <rect key="frame" x="96.5" y="150" width="200" height="400"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="エラー・クラッシュ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ErrorSectionLabel">
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="20"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                        <color key="textColor" systemColor="secondaryLabelColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ReportErrorButton">
+                                        <rect key="frame" x="0.0" y="32" width="200" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="ReportErrorButtonHeight"/>
+                                        </constraints>
+                                        <buttonConfiguration key="configuration" style="filled" title="エラーを送信"/>
+                                        <connections>
+                                            <action selector="reportErrorButtonTapped:" destination="RUMTestVC" eventType="touchUpInside" id="ReportErrorAction"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CrashButton">
+                                        <rect key="frame" x="0.0" y="88" width="200" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="CrashButtonHeight"/>
+                                        </constraints>
+                                        <buttonConfiguration key="configuration" style="filled" title="クラッシュさせる">
+                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="baseBackgroundColor" systemColor="systemRedColor"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="crashButtonTapped:" destination="RUMTestVC" eventType="touchUpInside" id="CrashAction"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="ログ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LogSectionLabel">
+                                        <rect key="frame" x="0.0" y="144" width="200" height="20"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                        <color key="textColor" systemColor="secondaryLabelColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LogButton">
+                                        <rect key="frame" x="0.0" y="176" width="200" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="LogButtonHeight"/>
+                                        </constraints>
+                                        <buttonConfiguration key="configuration" style="filled" title="ログを出力"/>
+                                        <connections>
+                                            <action selector="logButtonTapped:" destination="RUMTestVC" eventType="touchUpInside" id="LogAction"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="HTTPリクエスト" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HTTPSectionLabel">
+                                        <rect key="frame" x="0.0" y="232" width="200" height="20"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                        <color key="textColor" systemColor="secondaryLabelColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Request200Button">
+                                        <rect key="frame" x="0.0" y="264" width="200" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="Request200ButtonHeight"/>
+                                        </constraints>
+                                        <buttonConfiguration key="configuration" style="tinted" title="200 OK">
+                                            <color key="baseForegroundColor" systemColor="systemGreenColor"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="request200ButtonTapped:" destination="RUMTestVC" eventType="touchUpInside" id="Request200Action"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Request400Button">
+                                        <rect key="frame" x="0.0" y="320" width="200" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="Request400ButtonHeight"/>
+                                        </constraints>
+                                        <buttonConfiguration key="configuration" style="tinted" title="400 Bad Request">
+                                            <color key="baseForegroundColor" systemColor="systemOrangeColor"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="request400ButtonTapped:" destination="RUMTestVC" eventType="touchUpInside" id="Request400Action"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Request500Button">
+                                        <rect key="frame" x="0.0" y="376" width="200" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="Request500ButtonHeight"/>
+                                        </constraints>
+                                        <buttonConfiguration key="configuration" style="tinted" title="500 Server Error">
+                                            <color key="baseForegroundColor" systemColor="systemRedColor"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="request500ButtonTapped:" destination="RUMTestVC" eventType="touchUpInside" id="Request500Action"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="RUMStackWidth"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="RUMTestSafeArea"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="RUMButtonStack" firstAttribute="top" secondItem="RUMTestSafeArea" secondAttribute="top" constant="50" id="RUMStackTop"/>
+                            <constraint firstItem="RUMButtonStack" firstAttribute="centerX" secondItem="RUMTestView" secondAttribute="centerX" id="RUMStackCenterX"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="RUM テスト" id="RUMTestNavItem"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RUMTestFirstResponder" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2292" y="0"/>
+        </scene>
     </scenes>
     <resources>
         <systemColor name="secondaryLabelColor">
@@ -280,6 +409,12 @@
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.78039215686274510" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

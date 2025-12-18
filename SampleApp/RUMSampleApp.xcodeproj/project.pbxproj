@@ -12,6 +12,7 @@
 		4F5C18C1ED7BD73FB5AA3616 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E661939DB1106F070DAD7B32 /* WebViewController.swift */; };
 		6E95B84E2EF39B7B00962E2F /* SplunkAgent in Frameworks */ = {isa = PBXBuildFile; productRef = 6E95B84D2EF39B7B00962E2F /* SplunkAgent */; };
 		6E95B8502EF39B7B00962E2F /* SplunkAgentObjC in Frameworks */ = {isa = PBXBuildFile; productRef = 6E95B84F2EF39B7B00962E2F /* SplunkAgentObjC */; };
+		6E95B8522EF3D30500962E2F /* RUMTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E95B8512EF3D30500962E2F /* RUMTestViewController.swift */; };
 		734224AF6968D85C7167B108 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1D0AB66F242C5F00BC90BD /* AppDelegate.swift */; };
 		78C1348C1F823A018415F55A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCE7BBB5C44210EAEA2AB498 /* LaunchScreen.storyboard */; };
 		7CF7A5AC5189004B700EA9E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 601680A6BC52D73E6B8412AD /* Main.storyboard */; };
@@ -30,6 +31,7 @@
 		32B379B32AA5A032A4E269BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		4EB280526ECAF3CECFF3D8C8 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		601680A6BC52D73E6B8412AD /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		6E95B8512EF3D30500962E2F /* RUMTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RUMTestViewController.swift; sourceTree = "<group>"; };
 		73339F514C0B37169E3BE4F5 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		81FFC9D17DCC95F867765F0B /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		82B30F44ECA688B4A3806698 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 		AF01C146DFBA89791D9C5607 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				6E95B8512EF3D30500962E2F /* RUMTestViewController.swift */,
 				243C131E41D669B43EAC74F4 /* CameraViewController.swift */,
 				73339F514C0B37169E3BE4F5 /* HomeViewController.swift */,
 				9938AF0096DC43D946A008E3 /* LoginViewController.swift */,
@@ -198,6 +201,7 @@
 				DC378659E6DA09CB75CB02E9 /* HomeViewController.swift in Sources */,
 				40949842E6B11220B2532C61 /* LoginViewController.swift in Sources */,
 				CAA5DE18D5F3E88BDC6231FA /* SceneDelegate.swift in Sources */,
+				6E95B8522EF3D30500962E2F /* RUMTestViewController.swift in Sources */,
 				4F5C18C1ED7BD73FB5AA3616 /* WebViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
