@@ -44,22 +44,22 @@ class RUMTestViewController: UIViewController {
 
     // MARK: - HTTP Requests
 
-    private let baseURL = "http://localhost:4200"
+    private let apiBaseURL = "http://localhost:3000"
 
     @IBAction func request200ButtonTapped(_ sender: UIButton) {
-        makeRequest(to: "\(baseURL)/api/test/200", expectedStatus: 200)
+        makeRequest(to: "\(apiBaseURL)/api/test/200", expectedStatus: 200)
     }
 
     @IBAction func request400ButtonTapped(_ sender: UIButton) {
-        makeRequest(to: "\(baseURL)/api/test/400", expectedStatus: 400)
+        makeRequest(to: "\(apiBaseURL)/api/test/400", expectedStatus: 400)
     }
 
     @IBAction func request500ButtonTapped(_ sender: UIButton) {
-        makeRequest(to: "\(baseURL)/api/test/500", expectedStatus: 500)
+        makeRequest(to: "\(apiBaseURL)/api/test/500", expectedStatus: 500)
     }
 
     @IBAction func requestProductsButtonTapped(_ sender: UIButton) {
-        makeRequest(to: "\(baseURL)/api/products", expectedStatus: 200)
+        makeRequest(to: "\(apiBaseURL)/api/products", expectedStatus: 200)
     }
 
     private func makeRequest(to urlString: String, expectedStatus: Int, timeout: TimeInterval = 30) {

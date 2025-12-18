@@ -1,9 +1,8 @@
 const express = require('express');
 const cors = require('cors');
-const path = require('path');
 
 const app = express();
-const PORT = 4200;
+const PORT = 3000;
 
 // CORS設定（iOSシミュレーターからのアクセスを許可）
 app.use(cors());
@@ -65,17 +64,17 @@ const products = [
 
 // 商品一覧（200 OK）
 app.get('/api/products', (req, res) => {
-  res.json(products);
+  return res.status(200).json(products);
 });
 
-// 商品詳細（200 OK）
+// 商品詳細（200 OK / 404 Not Found）
 app.get('/api/products/:id', (req, res) => {
   const id = parseInt(req.params.id);
   const product = products.find(p => p.id === id);
   if (product) {
-    res.json(product);
+    return res.status(200).json(product);
   } else {
-    res.status(404).json({ error: '商品が見つかりません' });
+    return res.status(404).json({ error: '商品が見つかりません' });
   }
 });
 
@@ -94,19 +93,11 @@ app.get('/api/test/500', (req, res) => {
   return res.status(500).json({ error: 'Internal Server Error', message: 'サーバーエラーが発生しました' });
 });
 
-// Angular アプリの静的ファイルを配信
-app.use(express.static(path.join(__dirname, 'dist/angular-app/browser')));
-
-// SPA用: 全てのルートをindex.htmlにリダイレクト（Express 5対応）
-app.use((req, res) => {
-  res.sendFile(path.join(__dirname, 'dist/angular-app/browser/index.html'));
-});
-
 app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
-  console.log('API endpoints:');
-  console.log('  GET /api/products     - 商品一覧');
-  console.log('  GET /api/products/:id - 商品詳細');
+  console.log(`API Server running at http://localhost:${PORT}`);
+  console.log('Endpoints:');
+  console.log('  GET /api/products     - 商品一覧 (200)');
+  console.log('  GET /api/products/:id - 商品詳細 (200/404)');
   console.log('  GET /api/test/200     - 200 OK');
   console.log('  GET /api/test/400     - 400 Bad Request');
   console.log('  GET /api/test/500     - 500 Internal Server Error');

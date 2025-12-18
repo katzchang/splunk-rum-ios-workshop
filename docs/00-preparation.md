@@ -57,20 +57,28 @@ git clone <リポジトリURL>
 cd splunk-rum-ios-workshop
 ```
 
-### 3.2 Angular アプリの起動
+### 3.2 Angular アプリと API サーバーの起動
 
-WebView で表示する商品一覧アプリを起動します。
+WebView で表示する商品一覧アプリと、RUM テスト用の API サーバーを起動します。
 
+**ターミナル 1: Angular アプリ（WebView 用）**
 ```bash
 cd angular-app
 npm install
-npm run build
-npm run serve
+npm start
 ```
 
 ブラウザで http://localhost:4200 にアクセスし、商品一覧が表示されることを確認してください。
 
-> **Note:** Angular アプリはワークショップ中ずっと起動しておく必要があります。サーバーは API エンドポイントも提供します（`/api/products` など）。
+**ターミナル 2: API サーバー（HTTP ステータスコードテスト用）**
+```bash
+cd angular-app
+npm run serve
+```
+
+API サーバーが http://localhost:3000 で起動します。
+
+> **Note:** 両方のサーバーをワークショップ中ずっと起動しておく必要があります。
 
 ### 3.3 iOS アプリのビルド
 
