@@ -50,14 +50,19 @@ class RUMTestViewController: UIViewController {
         present(alert, animated: true)
     }
 
-    // MARK: - Log
+    // MARK: - Custom Event
 
     @IBAction func logButtonTapped(_ sender: UIButton) {
-        let timestamp = Date()
-        let message = "RUM テストログ: \(timestamp)"
-        NSLog(message)
-        print("Print: \(message)")
-        showAlert(title: "ログ出力", message: "NSLogとprintでログを出力しました\n\nコンソールを確認してください")
+        // カスタムイベントをトラッキング
+        if let agent = (UIApplication.shared.delegate as? AppDelegate)?.agent {
+            let attrs = MutableAttributes()
+            attrs["button.name"] = .string("log_button")
+            attrs["screen.name"] = .string("RUMTestViewController")
+            attrs["timestamp"] = .string(ISO8601DateFormatter().string(from: Date()))
+            agent.customTracking.trackCustomEvent("button_tapped", attrs)
+        }
+
+        showAlert(title: "ログ出力", message: "カスタムイベントを Splunk RUM に送信しました")
     }
 
     // MARK: - HTTP Requests
