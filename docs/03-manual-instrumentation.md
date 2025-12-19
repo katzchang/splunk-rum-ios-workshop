@@ -140,7 +140,44 @@ import OpenTelemetryApi
 
 ---
 
-## 4. その他の手動計装
+## 4. ログの収集（Splunk HEC）
+
+### 4.1 LogCollector とは
+
+`LogCollector` は、アプリ内の `NSLog` 出力をキャプチャして Splunk HTTP Event Collector (HEC) に送信するユーティリティです。
+
+stderr をフックすることで、`NSLog` や `print` の出力を自動的に収集し、Splunk に転送します。
+
+### 4.2 設定方法
+
+1. **Info.plist に HEC 設定を追加**
+
+   ```xml
+   <key>SplunkHECURL</key>
+   <string>https://your-splunk-instance:8088/services/collector/event</string>
+   <key>SplunkHECToken</key>
+   <string>your-hec-token</string>
+   ```
+
+2. **AppDelegate で初期化**（サンプルアプリでは設定済み）
+
+   ```swift
+   // LogCollector を開始（NSLog を Splunk HEC に送信）
+   LogCollector.shared.start()
+   ```
+
+### 4.3 動作確認
+
+1. Info.plist に HEC の URL とトークンを設定
+2. アプリをビルド＆実行
+3. `NSLog` を出力するコードを実行（例：RUM テスト画面の各ボタン）
+4. Splunk で `sourcetype="ios_app_log"` を検索してログが表示されることを確認
+
+> **Note:** HEC が設定されていない場合、LogCollector は起動時に警告を出力して何もしません。
+
+---
+
+## 5. その他の手動計装
 
 このワークショップでは基本的な手動計装のみを紹介しましたが、他にも以下のような機能があります：
 
@@ -152,7 +189,7 @@ import OpenTelemetryApi
 
 ---
 
-## 5. トラブルシューティング
+## 6. トラブルシューティング
 
 ### エラーやイベントが表示されない場合
 
@@ -165,6 +202,12 @@ import OpenTelemetryApi
 1. `span.end()` が正しいタイミングで呼ばれているか確認
 2. 非同期処理の場合、完了コールバック内で `end()` を呼ぶ
 
+### LogCollector でログが送信されない場合
+
+1. Info.plist に `SplunkHECURL` と `SplunkHECToken` が正しく設定されているか確認
+2. HEC エンドポイントがアクセス可能か確認
+3. Xcode コンソールに LogCollector の警告メッセージが出ていないか確認
+
 ---
 
 ## 確認チェックリスト
@@ -174,6 +217,7 @@ import OpenTelemetryApi
 - [ ] エラートラッキングを実装し、Splunk RUM で確認した
 - [ ] カスタムイベントを実装し、Splunk RUM で確認した
 - [ ] カスタムスパンを実装し、Splunk RUM で確認した
+- [ ] （オプション）LogCollector を設定し、Splunk でログを確認した
 
 おめでとうございます！Splunk RUM iOS SDK のワークショップが完了しました。
 

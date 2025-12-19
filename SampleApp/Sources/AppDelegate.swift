@@ -39,6 +39,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // セッションリプレイを開始
         agent?.sessionReplay.start()
 
+        // LogCollector を開始（NSLog を Splunk HEC に送信）
+        LogCollector.shared.start()
+
         return true
     }
 
