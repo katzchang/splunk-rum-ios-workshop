@@ -1,5 +1,6 @@
 import UIKit
 import SplunkAgent
+import OpenTelemetryApi
 
 class RUMTestViewController: UIViewController {
 
@@ -63,6 +64,49 @@ class RUMTestViewController: UIViewController {
         }
 
         showAlert(title: "ログ出力", message: "カスタムイベントを Splunk RUM に送信しました")
+    }
+
+    // MARK: - Custom Span
+
+    @IBAction func runAnalysisButtonTapped(_ sender: UIButton) {
+        let tracer = OpenTelemetry.instance.tracerProvider.get(
+            instrumentationName: "RUMSampleApp",
+            instrumentationVersion: "1.0.0"
+        )
+
+        // スパンを開始
+        let span = tracer.spanBuilder(spanName: "run_analysis").startSpan()
+        span.setAttribute(key: "analysis.type", value: "demo")
+
+        // ランダムなレイテンシ（1〜5秒）
+        let latency = Double.random(in: 1.0...5.0)
+        // 25% の確率でエラー
+        let shouldFail = Double.random(in: 0...1) < 0.25
+
+        DispatchQueue.global().async {
+            Thread.sleep(forTimeInterval: latency)
+
+            DispatchQueue.main.async {
+                span.setAttribute(key: "analysis.duration_seconds", value: latency)
+
+                if shouldFail {
+                    span.status = .error(description: "Analysis failed due to random error")
+                    span.setAttribute(key: "error", value: true)
+                    span.end()
+                    self.showAlert(
+                        title: "分析エラー",
+                        message: String(format: "処理時間: %.1f秒\nエラーが発生しました", latency)
+                    )
+                } else {
+                    span.status = .ok
+                    span.end()
+                    self.showAlert(
+                        title: "分析完了",
+                        message: String(format: "処理時間: %.1f秒\n正常に完了しました", latency)
+                    )
+                }
+            }
+        }
     }
 
     // MARK: - HTTP Requests

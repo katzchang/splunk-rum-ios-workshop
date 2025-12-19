@@ -98,33 +98,42 @@ class RUMTestViewController: UIViewController {
 
 ### 3.2 実装方法
 
-OpenTelemetry Swift API を使用してカスタムスパンを作成します。
+OpenTelemetry Swift API を使用してカスタムスパンを作成します。`RUMTestViewController.swift` の「分析を実行」ボタンに実装されています。
 
 ```swift
 import OpenTelemetryApi
 
-@IBAction func createCustomSpanButtonTapped(_ sender: UIButton) {
+@IBAction func runAnalysisButtonTapped(_ sender: UIButton) {
     let tracer = OpenTelemetry.instance.tracerProvider.get(
         instrumentationName: "RUMSampleApp",
         instrumentationVersion: "1.0.0"
     )
 
     // スパンを開始
-    let span = tracer.spanBuilder(spanName: "heavy_processing").startSpan()
+    let span = tracer.spanBuilder(spanName: "run_analysis").startSpan()
+    span.setAttribute(key: "analysis.type", value: "demo")
 
-    // 重い処理をシミュレート
+    // ランダムなレイテンシ（1〜5秒）
+    let latency = Double.random(in: 1.0...5.0)
+    // 25% の確率でエラー
+    let shouldFail = Double.random(in: 0...1) < 0.25
+
     DispatchQueue.global().async {
-        Thread.sleep(forTimeInterval: 2.0)
+        Thread.sleep(forTimeInterval: latency)
 
         DispatchQueue.main.async {
-            // スパンに属性を追加
-            span.setAttribute(key: "processing.type", value: "simulation")
-            span.setAttribute(key: "processing.items", value: 100)
+            span.setAttribute(key: "analysis.duration_seconds", value: latency)
 
-            // スパンを終了
-            span.end()
-
-            self.showAlert(title: "スパン完了", message: "カスタムスパン（2秒）を記録しました")
+            if shouldFail {
+                span.status = .error(description: "Analysis failed")
+                span.setAttribute(key: "error", value: true)
+                span.end()
+                // エラーアラートを表示
+            } else {
+                span.status = .ok
+                span.end()
+                // 成功アラートを表示
+            }
         }
     }
 }
@@ -133,10 +142,10 @@ import OpenTelemetryApi
 ### 3.3 動作確認
 
 1. アプリをビルド＆実行
-2. RUM テスト画面でスパン作成ボタンをタップ
-3. 2秒後に完了メッセージが表示される
+2. RUM テスト画面で「分析を実行」ボタンをタップ
+3. 1〜5秒後に結果メッセージが表示される（25% の確率でエラー）
 4. Splunk RUM の **Sessions** → **Traces** でスパンを確認
-5. `heavy_processing` スパンが約2秒で記録されていることを確認
+5. `run_analysis` スパンのレイテンシとステータス（成功/エラー）を確認
 
 ---
 

@@ -53,7 +53,7 @@
 ### 3.1 リポジトリのクローン
 
 ```bash
-git clone <リポジトリURL>
+git clone https://github.com/katzchang/splunk-rum-ios-workshop.git
 cd splunk-rum-ios-workshop
 ```
 
@@ -135,7 +135,8 @@ Xcode が開いたら：
 1. 「RUM テスト」をタップ
 2. 以下のボタンが表示されることを確認：
    - **クラッシュさせる** - アプリをクラッシュさせる（RUM でクラッシュレポートを確認）
-   - **ログを出力** - NSLog でログを出力
+   - **ログを出力** - カスタムイベントを送信
+   - **分析を実行** - カスタムスパンを作成（ランダムなレイテンシとエラー）
    - **200 OK / 400 Bad Request / 500 Server Error** - HTTP リクエストのテスト
    - **商品一覧 (API)** - Angular サーバーの API にリクエスト
 3. 「200 OK」をタップし、レスポンスが受信されることを確認
