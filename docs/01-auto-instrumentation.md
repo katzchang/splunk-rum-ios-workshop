@@ -91,7 +91,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let agentConfiguration = AgentConfiguration(
             endpoint: endpointConfiguration,
             appName: "RUMSampleApp",
-            deploymentEnvironment: "lab"
+            deploymentEnvironment: "<YOUR_INITIALS>"
         )
 
         do {
@@ -121,6 +121,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 |-----------------|------|-----|
 | `<YOUR_REALM>` | Splunk の Realm | `jp0` |
 | `<YOUR_RUM_ACCESS_TOKEN>` | 発行したアクセストークン | `xxxxx...` |
+| `<YOUR_INITIALS>` | 参加者のイニシャル（小文字） | `tk`、`ys` |
+
+> **Note:** `deploymentEnvironment` にイニシャルを設定することで、Splunk RUM で自分のデータをフィルタリングしやすくなります。
 
 ---
 
