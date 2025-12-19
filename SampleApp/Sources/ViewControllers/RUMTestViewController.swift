@@ -1,10 +1,18 @@
 import UIKit
+import SplunkAgent
 
 class RUMTestViewController: UIViewController {
+
+    // MARK: - Masking Demo
+    @IBOutlet weak var maskedLabel: UILabel!
+    @IBOutlet weak var normalLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "RUM テスト"
+
+        // マスキングのデモ: この要素はSession Replayでマスクされる
+        maskedLabel.srSensitive = true
     }
 
     // MARK: - Error
@@ -15,6 +23,16 @@ class RUMTestViewController: UIViewController {
             code: 1001,
             userInfo: [NSLocalizedDescriptionKey: "テスト用のエラーが発生しました"]
         )
+        
+        // Splunk RUM にエラーをトラッキング
+        if let agent = (UIApplication.shared.delegate as? AppDelegate)?.agent {
+            let attrs = MutableAttributes()
+            attrs["ErrorDomain"] = .string("com.example.RUMSampleApp")
+            attrs["ErrorCode"] = .int(1001)
+            attrs["Description"] = .string("テスト用のエラーが発生しました")
+            agent.customTracking.trackError(error, attrs)
+        }
+
     }
 
     // MARK: - Crash

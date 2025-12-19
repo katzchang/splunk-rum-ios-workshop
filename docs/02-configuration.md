@@ -138,7 +138,52 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 ---
 
-## 3. その他の設定
+## 3. セッションリプレイのマスキング
+
+### 3.1 マスキングとは
+
+セッションリプレイでは画面の操作が録画されますが、クレジットカード番号やパスワードなどの機密情報は録画から除外する必要があります。
+
+`srSensitive` プロパティを使用することで、特定の UI 要素をマスキングできます。
+
+### 3.2 UIKit での設定方法
+
+機密情報を含む UI 要素に `srSensitive = true` を設定します。
+
+```swift
+let passwordField = UITextField()
+passwordField.srSensitive = true
+
+let creditCardLabel = UILabel()
+creditCardLabel.srSensitive = true
+```
+
+### 3.3 SwiftUI での設定方法
+
+SwiftUI では `.sessionReplaySensitive()` モディファイアを使用します。
+
+```swift
+Text("Card Number: XXXX-XXXX-XXXX-1234")
+    .sessionReplaySensitive()
+
+SecureField("Password", text: $password)
+    .sessionReplaySensitive()
+```
+
+### 3.4 動作確認
+
+サンプルアプリの RUM テスト画面にマスキングデモが用意されています。
+
+1. RUM テスト画面を開く
+2. 画面下部に以下の2つのラベルが表示される：
+   - 「💳 4242-4242-4242-4242」（マスクあり）
+   - 「通常のテキスト（マスクなし）」
+3. アプリを操作した後、Splunk RUM の **Session Replay** で録画を確認
+4. クレジットカード番号がマスクされ、通常のテキストは表示されていることを確認
+
+---
+
+## 4. その他の設定
 
 このワークショップでは基本的な設定のみを紹介しましたが、Splunk RUM iOS SDK には他にも多くの設定オプションがあります。
 
@@ -147,7 +192,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 ---
 
-## 4. トラブルシューティング
+## 5. トラブルシューティング
 
 ### グローバル属性が表示されない場合
 

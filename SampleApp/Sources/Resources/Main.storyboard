@@ -389,6 +389,23 @@
                                             <action selector="requestProductsButtonTapped:" destination="RUMTestVC" eventType="touchUpInside" id="RequestProductsAction"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="マスキングデモ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MaskingSectionLabel">
+                                        <rect key="frame" x="0.0" y="488" width="200" height="20"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                        <color key="textColor" systemColor="secondaryLabelColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="💳 4242-4242-4242-4242" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MaskedLabel">
+                                        <rect key="frame" x="0.0" y="520" width="200" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="textColor" systemColor="labelColor"/>
+                                        <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="通常のテキスト（マスクなし）" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NormalLabel">
+                                        <rect key="frame" x="0.0" y="562" width="200" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="textColor" systemColor="labelColor"/>
+                                        <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="RUMStackWidth"/>
@@ -403,6 +420,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="RUM テスト" id="RUMTestNavItem"/>
+                    <connections>
+                        <outlet property="maskedLabel" destination="MaskedLabel" id="MaskedLabelOutlet"/>
+                        <outlet property="normalLabel" destination="NormalLabel" id="NormalLabelOutlet"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RUMTestFirstResponder" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -427,6 +448,15 @@
         </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.78039215686274510" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
