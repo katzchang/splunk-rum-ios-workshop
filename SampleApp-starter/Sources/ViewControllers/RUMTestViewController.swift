@@ -1,0 +1,134 @@
+import UIKit
+
+class RUMTestViewController: UIViewController {
+
+    // MARK: - Masking Demo
+    @IBOutlet weak var maskedLabel: UILabel!
+    @IBOutlet weak var normalLabel: UILabel!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        title = "RUM テスト"
+    }
+
+    // MARK: - Error
+
+    @IBAction func reportErrorButtonTapped(_ sender: UIButton) {
+        let error = NSError(
+            domain: "com.example.RUMSampleApp",
+            code: 1001,
+            userInfo: [NSLocalizedDescriptionKey: "テスト用のエラーが発生しました"]
+        )
+
+        // TODO: Splunk RUM にエラーをトラッキング
+        print("Error: \(error)")
+
+        showAlert(title: "エラー", message: "エラーを生成しました（未計装）")
+    }
+
+    // MARK: - Crash
+
+    @IBAction func crashButtonTapped(_ sender: UIButton) {
+        let alert = UIAlertController(
+            title: "クラッシュ確認",
+            message: "アプリをクラッシュさせます。よろしいですか？",
+            preferredStyle: .alert
+        )
+        alert.addAction(UIAlertAction(title: "キャンセル", style: .cancel))
+        alert.addAction(UIAlertAction(title: "クラッシュ", style: .destructive) { _ in
+            fatalError("テスト用のクラッシュです")
+        })
+        present(alert, animated: true)
+    }
+
+    // MARK: - Custom Event
+
+    @IBAction func logButtonTapped(_ sender: UIButton) {
+        // TODO: カスタムイベントをトラッキング
+        let timestamp = ISO8601DateFormatter().string(from: Date())
+        print("Log event at \(timestamp)")
+
+        showAlert(title: "ログ出力", message: "ログを出力しました（未計装）")
+    }
+
+    // MARK: - Custom Span
+
+    @IBAction func runAnalysisButtonTapped(_ sender: UIButton) {
+        // TODO: カスタムスパンを作成
+
+        // ランダムなレイテンシ（1〜5秒）
+        let latency = Double.random(in: 1.0...5.0)
+        // 25% の確率でエラー
+        let shouldFail = Double.random(in: 0...1) < 0.25
+
+        DispatchQueue.global().async {
+            Thread.sleep(forTimeInterval: latency)
+
+            DispatchQueue.main.async {
+                if shouldFail {
+                    self.showAlert(
+                        title: "分析エラー",
+                        message: String(format: "処理時間: %.1f秒\nエラーが発生しました（未計装）", latency)
+                    )
+                } else {
+                    self.showAlert(
+                        title: "分析完了",
+                        message: String(format: "処理時間: %.1f秒\n正常に完了しました（未計装）", latency)
+                    )
+                }
+            }
+        }
+    }
+
+    // MARK: - HTTP Requests
+
+    private let apiBaseURL = "http://localhost:3000"
+
+    @IBAction func request200ButtonTapped(_ sender: UIButton) {
+        makeRequest(to: "\(apiBaseURL)/api/test/200")
+    }
+
+    @IBAction func request400ButtonTapped(_ sender: UIButton) {
+        makeRequest(to: "\(apiBaseURL)/api/test/400")
+    }
+
+    @IBAction func request500ButtonTapped(_ sender: UIButton) {
+        makeRequest(to: "\(apiBaseURL)/api/test/500")
+    }
+
+    @IBAction func requestProductsButtonTapped(_ sender: UIButton) {
+        makeRequest(to: "\(apiBaseURL)/api/products")
+    }
+
+    private func makeRequest(to urlString: String, timeout: TimeInterval = 30) {
+        guard let url = URL(string: urlString) else { return }
+
+        var request = URLRequest(url: url)
+        request.timeoutInterval = timeout
+
+        let task = URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
+            DispatchQueue.main.async {
+                if let error = error {
+                    self?.showAlert(title: "エラー", message: error.localizedDescription)
+                    return
+                }
+
+                if let httpResponse = response as? HTTPURLResponse {
+                    self?.showAlert(
+                        title: "レスポンス",
+                        message: "ステータスコード: \(httpResponse.statusCode)"
+                    )
+                }
+            }
+        }
+        task.resume()
+    }
+
+    // MARK: - Helper
+
+    private func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
+    }
+}

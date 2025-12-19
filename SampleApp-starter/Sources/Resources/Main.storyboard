@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NavController">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="NavScene">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NavController" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="NavBar">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="LoginVC" kind="relationship" relationship="rootViewController" id="NavToLogin"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NavFirstResponder" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-764" y="0"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="LoginScene">
+            <objects>
+                <viewController id="LoginVC" customClass="LoginViewController" customModule="RUMSampleApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LoginView">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RUM Sample App" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TitleLabel">
+                                <rect key="frame" x="96.666666666666671" y="300" width="200" height="36"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Face IDでログインしてください" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="StatusLabel">
+                                <rect key="frame" x="71.666666666666671" y="360" width="250" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="secondaryLabelColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LoginButton">
+                                <rect key="frame" x="146.66666666666666" y="420" width="100" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="LoginButtonWidth"/>
+                                    <constraint firstAttribute="height" constant="50" id="LoginButtonHeight"/>
+                                </constraints>
+                                <state key="normal" title="ログイン"/>
+                                <buttonConfiguration key="configuration" style="filled" title="ログイン">
+                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="17"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="loginButtonTapped:" destination="LoginVC" eventType="touchUpInside" id="LoginAction"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="LoginSafeArea"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="TitleLabel" firstAttribute="centerX" secondItem="LoginView" secondAttribute="centerX" id="TitleCenterX"/>
+                            <constraint firstItem="TitleLabel" firstAttribute="centerY" secondItem="LoginView" secondAttribute="centerY" constant="-126" id="TitleCenterY"/>
+                            <constraint firstItem="StatusLabel" firstAttribute="top" secondItem="TitleLabel" secondAttribute="bottom" constant="24" id="StatusTop"/>
+                            <constraint firstItem="StatusLabel" firstAttribute="centerX" secondItem="LoginView" secondAttribute="centerX" id="StatusCenterX"/>
+                            <constraint firstItem="LoginButton" firstAttribute="top" secondItem="StatusLabel" secondAttribute="bottom" constant="39" id="ButtonTop"/>
+                            <constraint firstItem="LoginButton" firstAttribute="centerX" secondItem="LoginView" secondAttribute="centerX" id="ButtonCenterX"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="ログイン" id="LoginNavItem"/>
+                    <connections>
+                        <outlet property="loginButton" destination="LoginButton" id="LoginButtonOutlet"/>
+                        <outlet property="statusLabel" destination="StatusLabel" id="StatusLabelOutlet"/>
+                        <segue destination="HomeVC" kind="show" identifier="showHome" id="ShowHomeSegue"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LoginFirstResponder" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="0" y="0"/>
+        </scene>
+        <!--Home View Controller-->
+        <scene sceneID="HomeScene">
+            <objects>
+                <viewController id="HomeVC" customClass="HomeViewController" customModule="RUMSampleApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HomeView">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ようこそ！" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WelcomeLabel">
+                                <rect key="frame" x="146.66666666666666" y="200" width="100" height="36"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="ButtonStack">
+                                <rect key="frame" x="96.666666666666671" y="300" width="200" height="164"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CameraButton">
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="CameraButtonHeight"/>
+                                        </constraints>
+                                        <state key="normal" title="カメラ"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="カメラを起動">
+                                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="17"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="cameraButtonTapped:" destination="HomeVC" eventType="touchUpInside" id="CameraAction"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WebViewButton">
+                                        <rect key="frame" x="0.0" y="66" width="200" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="WebViewButtonHeight"/>
+                                        </constraints>
+                                        <state key="normal" title="商品一覧"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="商品一覧を見る">
+                                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="17"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="webViewButtonTapped:" destination="HomeVC" eventType="touchUpInside" id="WebViewAction"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RUMTestButton">
+                                        <rect key="frame" x="0.0" y="132" width="200" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="RUMTestButtonHeight"/>
+                                        </constraints>
+                                        <state key="normal" title="RUMテスト"/>
+                                        <buttonConfiguration key="configuration" style="tinted" title="RUM テスト">
+                                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="17"/>
+                                            <color key="baseForegroundColor" systemColor="systemOrangeColor"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="rumTestButtonTapped:" destination="HomeVC" eventType="touchUpInside" id="RUMTestAction"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LogoutButton">
+                                        <rect key="frame" x="0.0" y="198" width="200" height="32"/>
+                                        <state key="normal" title="ログアウト"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="ログアウト">
+                                            <fontDescription key="titleFontDescription" type="system" pointSize="17"/>
+                                            <color key="baseForegroundColor" systemColor="systemRedColor"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="logoutButtonTapped:" destination="HomeVC" eventType="touchUpInside" id="LogoutAction"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="StackWidth"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="HomeSafeArea"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="WelcomeLabel" firstAttribute="centerX" secondItem="HomeView" secondAttribute="centerX" id="WelcomeCenterX"/>
+                            <constraint firstItem="WelcomeLabel" firstAttribute="top" secondItem="HomeSafeArea" secondAttribute="top" constant="100" id="WelcomeTop"/>
+                            <constraint firstItem="ButtonStack" firstAttribute="top" secondItem="WelcomeLabel" secondAttribute="bottom" constant="64" id="StackTop"/>
+                            <constraint firstItem="ButtonStack" firstAttribute="centerX" secondItem="HomeView" secondAttribute="centerX" id="StackCenterX"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="ホーム" id="HomeNavItem"/>
+                    <connections>
+                        <outlet property="welcomeLabel" destination="WelcomeLabel" id="WelcomeLabelOutlet"/>
+                        <segue destination="CameraVC" kind="show" identifier="showCamera" id="ShowCameraSegue"/>
+                        <segue destination="WebViewVC" kind="show" identifier="showWebView" id="ShowWebViewSegue"/>
+                        <segue destination="RUMTestVC" kind="show" identifier="showRUMTest" id="ShowRUMTestSegue"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HomeFirstResponder" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="764" y="0"/>
+        </scene>
+        <!--Camera View Controller-->
+        <scene sceneID="CameraScene">
+            <objects>
+                <viewController id="CameraVC" customClass="CameraViewController" customModule="RUMSampleApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CameraView">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PreviewView">
+                                <rect key="frame" x="0.0" y="103" width="393" height="600"/>
+                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                            </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CapturedImageView">
+                                <rect key="frame" x="16" y="119" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="ImageWidth"/>
+                                    <constraint firstAttribute="height" constant="150" id="ImageHeight"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CaptureButton">
+                                <rect key="frame" x="146.66666666666666" y="740" width="100" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="CaptureButtonWidth"/>
+                                    <constraint firstAttribute="height" constant="50" id="CaptureButtonHeight"/>
+                                </constraints>
+                                <state key="normal" title="撮影"/>
+                                <buttonConfiguration key="configuration" style="filled" title="撮影">
+                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="17"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="captureButtonTapped:" destination="CameraVC" eventType="touchUpInside" id="CaptureAction"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="CameraSafeArea"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="PreviewView" firstAttribute="leading" secondItem="CameraSafeArea" secondAttribute="leading" id="PreviewLeading"/>
+                            <constraint firstItem="PreviewView" firstAttribute="trailing" secondItem="CameraSafeArea" secondAttribute="trailing" id="PreviewTrailing"/>
+                            <constraint firstItem="PreviewView" firstAttribute="top" secondItem="CameraSafeArea" secondAttribute="top" id="PreviewTop"/>
+                            <constraint firstItem="PreviewView" firstAttribute="height" constant="600" id="PreviewHeight"/>
+                            <constraint firstItem="CapturedImageView" firstAttribute="leading" secondItem="CameraSafeArea" secondAttribute="leading" constant="16" id="ImageLeading"/>
+                            <constraint firstItem="CapturedImageView" firstAttribute="top" secondItem="PreviewView" secondAttribute="top" constant="16" id="ImageTop"/>
+                            <constraint firstItem="CaptureButton" firstAttribute="centerX" secondItem="CameraView" secondAttribute="centerX" id="CaptureCenterX"/>
+                            <constraint firstItem="CaptureButton" firstAttribute="bottom" secondItem="CameraSafeArea" secondAttribute="bottom" constant="-28" id="CaptureBottom"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="カメラ" id="CameraNavItem"/>
+                    <connections>
+                        <outlet property="captureButton" destination="CaptureButton" id="CaptureButtonOutlet"/>
+                        <outlet property="capturedImageView" destination="CapturedImageView" id="CapturedImageViewOutlet"/>
+                        <outlet property="previewView" destination="PreviewView" id="PreviewViewOutlet"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CameraFirstResponder" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1528" y="-400"/>
+        </scene>
+        <!--Web View Controller-->
+        <scene sceneID="WebViewScene">
+            <objects>
+                <viewController id="WebViewVC" customClass="WebViewController" customModule="RUMSampleApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WebViewContainer">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WebViewControl">
+                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="ActivityIndicator">
+                                <rect key="frame" x="176" y="442" width="41" height="41"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="WebViewSafeArea"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="WebViewControl" firstAttribute="leading" secondItem="WebViewSafeArea" secondAttribute="leading" id="WebViewLeading"/>
+                            <constraint firstItem="WebViewControl" firstAttribute="trailing" secondItem="WebViewSafeArea" secondAttribute="trailing" id="WebViewTrailing"/>
+                            <constraint firstItem="WebViewControl" firstAttribute="top" secondItem="WebViewSafeArea" secondAttribute="top" id="WebViewTop"/>
+                            <constraint firstItem="WebViewControl" firstAttribute="bottom" secondItem="WebViewSafeArea" secondAttribute="bottom" id="WebViewBottom"/>
+                            <constraint firstItem="ActivityIndicator" firstAttribute="centerX" secondItem="WebViewContainer" secondAttribute="centerX" id="ActivityCenterX"/>
+                            <constraint firstItem="ActivityIndicator" firstAttribute="centerY" secondItem="WebViewContainer" secondAttribute="centerY" id="ActivityCenterY"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="商品一覧" id="WebViewNavItem">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="RefreshBarButton">
+                            <connections>
+                                <action selector="refreshButtonTapped:" destination="WebViewVC" id="RefreshAction"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="activityIndicator" destination="ActivityIndicator" id="ActivityIndicatorOutlet"/>
+                        <outlet property="webView" destination="WebViewControl" id="WebViewOutlet"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WebViewFirstResponder" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1528" y="400"/>
+        </scene>
+        <!--RUM Test View Controller-->
+        <scene sceneID="RUMTestScene">
+            <objects>
+                <viewController id="RUMTestVC" customClass="RUMTestViewController" customModule="RUMSampleApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RUMTestView">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="RUMButtonStack">
+                                <rect key="frame" x="96.5" y="150" width="200" height="400"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="エラー・クラッシュ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ErrorSectionLabel">
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="20"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                        <color key="textColor" systemColor="secondaryLabelColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ReportErrorButton">
+                                        <rect key="frame" x="0.0" y="32" width="200" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="ReportErrorButtonHeight"/>
+                                        </constraints>
+                                        <buttonConfiguration key="configuration" style="filled" title="エラーを送信"/>
+                                        <connections>
+                                            <action selector="reportErrorButtonTapped:" destination="RUMTestVC" eventType="touchUpInside" id="ReportErrorAction"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CrashButton">
+                                        <rect key="frame" x="0.0" y="88" width="200" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="CrashButtonHeight"/>
+                                        </constraints>
+                                        <buttonConfiguration key="configuration" style="filled" title="クラッシュさせる">
+                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="baseBackgroundColor" systemColor="systemRedColor"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="crashButtonTapped:" destination="RUMTestVC" eventType="touchUpInside" id="CrashAction"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="ログ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LogSectionLabel">
+                                        <rect key="frame" x="0.0" y="144" width="200" height="20"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                        <color key="textColor" systemColor="secondaryLabelColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LogButton">
+                                        <rect key="frame" x="0.0" y="176" width="200" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="LogButtonHeight"/>
+                                        </constraints>
+                                        <buttonConfiguration key="configuration" style="filled" title="ログを出力"/>
+                                        <connections>
+                                            <action selector="logButtonTapped:" destination="RUMTestVC" eventType="touchUpInside" id="LogAction"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="カスタムスパン" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SpanSectionLabel">
+                                        <rect key="frame" x="0.0" y="232" width="200" height="20"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                        <color key="textColor" systemColor="secondaryLabelColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RunAnalysisButton">
+                                        <rect key="frame" x="0.0" y="264" width="200" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="RunAnalysisButtonHeight"/>
+                                        </constraints>
+                                        <buttonConfiguration key="configuration" style="filled" title="分析を実行" subtitle="(重くて不安定な処理)">
+                                            <color key="baseForegroundColor" systemColor="systemPurpleColor"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="runAnalysisButtonTapped:" destination="RUMTestVC" eventType="touchUpInside" id="RunAnalysisAction"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="HTTPリクエスト" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HTTPSectionLabel">
+                                        <rect key="frame" x="0.0" y="232" width="200" height="20"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                        <color key="textColor" systemColor="secondaryLabelColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Request200Button">
+                                        <rect key="frame" x="0.0" y="264" width="200" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="Request200ButtonHeight"/>
+                                        </constraints>
+                                        <buttonConfiguration key="configuration" style="tinted" title="200 OK">
+                                            <color key="baseForegroundColor" systemColor="systemGreenColor"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="request200ButtonTapped:" destination="RUMTestVC" eventType="touchUpInside" id="Request200Action"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Request400Button">
+                                        <rect key="frame" x="0.0" y="320" width="200" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="Request400ButtonHeight"/>
+                                        </constraints>
+                                        <buttonConfiguration key="configuration" style="tinted" title="400 Bad Request">
+                                            <color key="baseForegroundColor" systemColor="systemOrangeColor"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="request400ButtonTapped:" destination="RUMTestVC" eventType="touchUpInside" id="Request400Action"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Request500Button">
+                                        <rect key="frame" x="0.0" y="376" width="200" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="Request500ButtonHeight"/>
+                                        </constraints>
+                                        <buttonConfiguration key="configuration" style="tinted" title="500 Server Error">
+                                            <color key="baseForegroundColor" systemColor="systemRedColor"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="request500ButtonTapped:" destination="RUMTestVC" eventType="touchUpInside" id="Request500Action"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RequestProductsButton">
+                                        <rect key="frame" x="0.0" y="432" width="200" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="RequestProductsButtonHeight"/>
+                                        </constraints>
+                                        <buttonConfiguration key="configuration" style="tinted" title="商品一覧 (API)">
+                                            <color key="baseForegroundColor" systemColor="systemBlueColor"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="requestProductsButtonTapped:" destination="RUMTestVC" eventType="touchUpInside" id="RequestProductsAction"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="マスキングデモ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MaskingSectionLabel">
+                                        <rect key="frame" x="0.0" y="488" width="200" height="20"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                        <color key="textColor" systemColor="secondaryLabelColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="💳 4242-4242-4242-4242" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MaskedLabel">
+                                        <rect key="frame" x="0.0" y="520" width="200" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="textColor" systemColor="labelColor"/>
+                                        <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="通常のテキスト（マスクなし）" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NormalLabel">
+                                        <rect key="frame" x="0.0" y="562" width="200" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="textColor" systemColor="labelColor"/>
+                                        <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="RUMStackWidth"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="RUMTestSafeArea"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="RUMButtonStack" firstAttribute="top" secondItem="RUMTestSafeArea" secondAttribute="top" constant="50" id="RUMStackTop"/>
+                            <constraint firstItem="RUMButtonStack" firstAttribute="centerX" secondItem="RUMTestView" secondAttribute="centerX" id="RUMStackCenterX"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="RUM テスト" id="RUMTestNavItem"/>
+                    <connections>
+                        <outlet property="maskedLabel" destination="MaskedLabel" id="MaskedLabelOutlet"/>
+                        <outlet property="normalLabel" destination="NormalLabel" id="NormalLabelOutlet"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RUMTestFirstResponder" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2292" y="0"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.78039215686274510" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPurpleColor">
+            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
