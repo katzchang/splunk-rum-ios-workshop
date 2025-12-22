@@ -1,4 +1,6 @@
 import UIKit
+// TODO: SplunkAgent をインポート
+// TODO: OpenTelemetryApi をインポート
 
 class RUMTestViewController: UIViewController {
 
@@ -9,6 +11,8 @@ class RUMTestViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "RUM テスト"
+
+        // TODO: maskedLabel にマスキングを設定
     }
 
     // MARK: - Error
@@ -44,11 +48,14 @@ class RUMTestViewController: UIViewController {
     // MARK: - Custom Event
 
     @IBAction func logButtonTapped(_ sender: UIButton) {
-        // TODO: カスタムイベントをトラッキング
         let timestamp = ISO8601DateFormatter().string(from: Date())
-        print("Log event at \(timestamp)")
 
-        showAlert(title: "ログ出力", message: "ログを出力しました（未計装）")
+        // NSLog を出力（LogCollector で HEC に送信される）
+        NSLog("ログボタンがタップされました: %@", timestamp)
+
+        // TODO: カスタムイベントをトラッキング
+
+        showAlert(title: "ログ出力", message: "NSLog を出力しました（カスタムイベント未計装）")
     }
 
     // MARK: - Custom Span

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0BDDBC8A9D6AB7C53929B065 /* LogCollector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32B64160A73852F7E5D0691 /* LogCollector.swift */; };
 		27763FF3D2E1E4B486DA25D0 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243C131E41D669B43EAC74F4 /* CameraViewController.swift */; };
 		40949842E6B11220B2532C61 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9938AF0096DC43D946A008E3 /* LoginViewController.swift */; };
 		4F5C18C1ED7BD73FB5AA3616 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E661939DB1106F070DAD7B32 /* WebViewController.swift */; };
@@ -34,6 +35,7 @@
 		82B30F44ECA688B4A3806698 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		94AB370E5199D41AF8725D1E /* RUMTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RUMTestViewController.swift; sourceTree = "<group>"; };
 		9938AF0096DC43D946A008E3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		A32B64160A73852F7E5D0691 /* LogCollector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogCollector.swift; sourceTree = "<group>"; };
 		B857E007562D2E8E7900C66E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C1CC9CE3CB66D12732CC36AD /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		DCE7BBB5C44210EAEA2AB498 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 				32B379B32AA5A032A4E269BB /* Info.plist */,
 				82B30F44ECA688B4A3806698 /* SceneDelegate.swift */,
 				EA3A79058FB58D2ADED0256D /* Resources */,
+				E6BA79FD56CC918AE5CB77CF /* Utilities */,
 				AF01C146DFBA89791D9C5607 /* ViewControllers */,
 			);
 			path = Sources;
@@ -103,6 +106,14 @@
 				E661939DB1106F070DAD7B32 /* WebViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		E6BA79FD56CC918AE5CB77CF /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				A32B64160A73852F7E5D0691 /* LogCollector.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		EA3A79058FB58D2ADED0256D /* Resources */ = {
@@ -191,6 +202,7 @@
 				734224AF6968D85C7167B108 /* AppDelegate.swift in Sources */,
 				27763FF3D2E1E4B486DA25D0 /* CameraViewController.swift in Sources */,
 				DC378659E6DA09CB75CB02E9 /* HomeViewController.swift in Sources */,
+				0BDDBC8A9D6AB7C53929B065 /* LogCollector.swift in Sources */,
 				40949842E6B11220B2532C61 /* LoginViewController.swift in Sources */,
 				CC3F8905266DE65C2748393D /* RUMTestViewController.swift in Sources */,
 				CAA5DE18D5F3E88BDC6231FA /* SceneDelegate.swift in Sources */,

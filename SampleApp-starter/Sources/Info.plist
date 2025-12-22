@@ -69,5 +69,9 @@
         <key>NSAllowsArbitraryLoads</key>
         <true/>
     </dict>
+    <key>SplunkHECURL</key>
+    <string></string>
+    <key>SplunkHECToken</key>
+    <string></string>
 </dict>
 </plist>
