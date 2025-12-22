@@ -12,7 +12,7 @@ Splunk Observability Cloud でアクセストークンを発行します。
 
 ### 1.1 トークンの作成
 
-1. [Splunk Observability Cloud](https://app.jp0.signalfx.com/) にログイン
+1. Splunk Observability Cloud にログイン
 2. 左下の **Settings**（歯車アイコン）をクリック
 3. **Access Tokens** を選択
 4. **+ New Token** をクリック
@@ -137,7 +137,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 ### 4.2 Splunk でデータを確認
 
-1. [Splunk Observability Cloud](https://app.jp0.signalfx.com/) にアクセス
+1. Splunk Observability Cloud にアクセス
 2. 左メニューから **RUM** を選択
 3. **App** ドロップダウンで `RUMSampleApp` を選択
 4. データが表示されることを確認
