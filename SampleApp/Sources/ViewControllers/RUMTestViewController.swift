@@ -54,16 +54,21 @@ class RUMTestViewController: UIViewController {
     // MARK: - Custom Event
 
     @IBAction func logButtonTapped(_ sender: UIButton) {
+        let timestamp = ISO8601DateFormatter().string(from: Date())
+
+        // NSLog を出力（LogCollector で HEC に送信される）
+        NSLog("ログボタンがタップされました: %@", timestamp)
+
         // カスタムイベントをトラッキング
         if let agent = (UIApplication.shared.delegate as? AppDelegate)?.agent {
             let attrs = MutableAttributes()
             attrs["button.name"] = .string("log_button")
             attrs["screen.name"] = .string("RUMTestViewController")
-            attrs["timestamp"] = .string(ISO8601DateFormatter().string(from: Date()))
+            attrs["timestamp"] = .string(timestamp)
             agent.customTracking.trackCustomEvent("button_tapped", attrs)
         }
 
-        showAlert(title: "ログ出力", message: "カスタムイベントを Splunk RUM に送信しました")
+        showAlert(title: "ログ出力", message: "NSLog と カスタムイベントを送信しました")
     }
 
     // MARK: - Custom Span

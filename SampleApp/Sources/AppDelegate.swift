@@ -22,9 +22,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             appName: "RUMSampleApp",
             deploymentEnvironment: "lab"
         )
-        .globalAttributes(MutableAttributes(dictionary: [
-            "enduser.role": .string("workshop_participant"),
-            "app.build": .string(Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String ?? "unknown")
+//            .enableDebugLogging(true)
+            .globalAttributes(MutableAttributes(dictionary: [
+                "enduser.role": .string("workshop_participant"),
+                "app.build": .string(Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String ?? "unknown")
         ]))
 
         do {
