@@ -10,7 +10,7 @@
 
 ### 1.1 ログイン
 
-1. ブラウザで [https://app.jp0.signalfx.com/](https://app.jp0.signalfx.com/) にアクセス
+1. ブラウザで [https://app.<REALM>.signalfx.com/](https://app.<REALM>.signalfx.com/) にアクセス（REALMはワークショップ中に提供）
 2. 提供された認証情報でログイン
 3. ダッシュボードが表示されることを確認
 
@@ -61,6 +61,8 @@ cd splunk-rum-ios-workshop
 
 WebView で表示する商品一覧アプリと、RUM テスト用の API サーバーを起動します。
 
+> **Note:** それぞれ別のターミナルで実行してください。両方のサーバーをワークショップ中ずっと起動しておく必要があります。
+
 **ターミナル 1: Angular アプリ（WebView 用）**
 ```bash
 cd angular-app
@@ -76,25 +78,22 @@ cd angular-app
 npm run serve
 ```
 
-API サーバーが http://localhost:3000 で起動します。
-
-> **Note:** 両方のサーバーをワークショップ中ずっと起動しておく必要があります。
+API サーバーが http://localhost:3000/api/products にアクセスし、APIが動作していることを確認してください。
 
 ### 3.3 iOS アプリのビルド
 
 新しいターミナルウィンドウを開き、以下を実行します。
 
 ```bash
-cd SampleApp
+cd SampleApp-starter
 open RUMSampleApp.xcodeproj
 ```
 
 Xcode が開いたら：
 
-1. 上部ツールバーの **RUMSampleApp** の右側にあるデバイス選択ドロップダウンをクリック
-2. 任意の **iPhone シミュレーター**（例：iPhone 16）を選択
-3. **Cmd + R** でビルド＆実行
-4. シミュレーターでアプリが起動することを確認
+1. 上部のデバイス選択で任意の **iPhone シミュレーター** を選択
+2. **Cmd + R** でビルド＆実行
+3. シミュレーターでアプリが起動することを確認
 
 ---
 

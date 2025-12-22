@@ -32,8 +32,8 @@ let agentConfiguration = AgentConfiguration(
     endpoint: endpointConfiguration,
     appName: "RUMSampleApp",
     deploymentEnvironment: "lab",
-    sessionSamplingRatio: 1.0  // 100% のセッションを収集
 )
+.sessionConfiguration(SessionConfiguration(samplingRate: 1.0)) // 100% のセッションを収集
 ```
 
 ### 1.3 動作確認
